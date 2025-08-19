@@ -1,0 +1,21 @@
+{
+    "name": "obadaalzidi/tap-php-sdk",
+    "description": "A PHP SDK for Tap Payments",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Obadaalzidi\\TapPhpSdk\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "obada",
+            "email": "opadaalziede@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "guzzlehttp/guzzle": "8.0.x-dev"
+    }
+}
