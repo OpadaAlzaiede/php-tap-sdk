@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Obadaalzidi\TapPhpSdk;
 
+use Obadaalzidi\TapPhpSdk\Api\Authorize;
+use Obadaalzidi\TapPhpSdk\Api\Charge;
+use Obadaalzidi\TapPhpSdk\Api\Refund;
 use Obadaalzidi\TapPhpSdk\Http\HttpClient;
-use Obadaalzidi\TapPhpSdk\Api\Acceptance\Charge;
-use Obadaalzidi\TapPhpSdk\Api\Acceptance\Refund;
-use Obadaalzidi\TapPhpSdk\Api\Acceptance\Authorize;
 
 class Tap
 {
@@ -15,8 +15,6 @@ class Tap
 
     /**
      * Tap constructor.
-     * 
-     * @param string $secretKey
      */
     public function __construct(string $secretKey)
     {
@@ -25,8 +23,6 @@ class Tap
 
     /**
      * Proxy to the Authorize API.
-     * 
-     * @return Authorize
      */
     public function authorize(): Authorize
     {
@@ -35,8 +31,6 @@ class Tap
 
     /**
      * Proxy to the Charge API.
-     * 
-     * @return Charge
      */
     public function charges(): Charge
     {
@@ -45,8 +39,6 @@ class Tap
 
     /**
      * Proxy to the Refund API.
-     * 
-     * @return Refund
      */
     public function refunds(): Refund
     {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Obadaalzidi\TapPhpSdk\Api\Acceptance;
+namespace Obadaalzidi\TapPhpSdk\Api;
 
 use Obadaalzidi\TapPhpSdk\Http\HttpClient;
 use Obadaalzidi\TapPhpSdk\Response\ChargeResponse;
@@ -11,8 +11,6 @@ class Charge extends BaseApi
 {
     /**
      * Charge constructor.
-     * 
-     * @param HttpClient $httpClient
      */
     public function __construct(protected HttpClient $httpClient)
     {

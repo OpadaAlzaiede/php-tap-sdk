@@ -17,5 +17,8 @@
     "minimum-stability": "dev",
     "require": {
         "guzzlehttp/guzzle": "8.0.x-dev"
+    },
+    "require-dev": {
+        "laravel/pint": "dev-main"
     }
 }

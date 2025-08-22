@@ -3,8 +3,8 @@
 namespace Obadaalzidi\TapPhpSdk\Http;
 
 use GuzzleHttp\Client as GuzzleClient;
-use Obadaalzidi\TapPhpSdk\Exceptions\TapException;
 use Obadaalzidi\TapPhpSdk\Exceptions\AuthenticationException;
+use Obadaalzidi\TapPhpSdk\Exceptions\TapException;
 
 class HttpClient
 {
@@ -12,8 +12,6 @@ class HttpClient
 
     /**
      * HttpClient constructor.
-     * 
-     * @param string $secretKey
      */
     public function __construct(string $secretKey)
     {
@@ -29,11 +27,6 @@ class HttpClient
 
     /**
      * Get a resource.
-     * 
-     * @param string $endpoint
-     * @param array $query
-     * 
-     * @return array
      */
     public function get(string $endpoint, array $query = []): array
     {
@@ -42,11 +35,6 @@ class HttpClient
 
     /**
      * Post a resource.
-     * 
-     * @param string $endpoint
-     * @param array $data
-     * 
-     * @return array
      */
     public function post(string $endpoint, array $data = []): array
     {
@@ -55,11 +43,6 @@ class HttpClient
 
     /**
      * Put a resource.
-     * 
-     * @param string $endpoint
-     * @param array $data
-     * 
-     * @return array
      */
     public function put(string $endpoint, array $data = []): array
     {
@@ -68,10 +51,6 @@ class HttpClient
 
     /**
      * Delete a resource.
-     * 
-     * @param string $endpoint
-     * 
-     * @return array
      */
     public function delete(string $endpoint): array
     {
@@ -80,26 +59,23 @@ class HttpClient
 
     /**
      * Make a request to the API.
-     * 
-     * @param string $method
-     * @param string $endpoint
-     * @param array $options
-     * 
-     * @return array
-     * 
+     *
+     *
+     *
      * @throws TapException
      */
     protected function request(string $method, string $endpoint, ?array $options = []): array
     {
         try {
             $response = $this->client->request($method, $endpoint, $options);
+
             return json_decode($response->getBody(), true);
         } catch (\GuzzleHttp\Exception\ClientException $e) {
             $response = json_decode($e->getResponse()->getBody(), true);
             $error = $response['errors'][0]['description'] ?? null;
             $statusCode = $e->getResponse()->getStatusCode();
 
-            if ($statusCode ===  401) {
+            if ($statusCode === 401) {
                 throw new AuthenticationException($error);
             }
 

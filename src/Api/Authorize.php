@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Obadaalzidi\TapPhpSdk\Api\Acceptance;
+namespace Obadaalzidi\TapPhpSdk\Api;
 
 use Obadaalzidi\TapPhpSdk\Http\HttpClient;
 use Obadaalzidi\TapPhpSdk\Response\AuthorizeResponse;
@@ -11,8 +11,6 @@ class Authorize extends BaseApi
 {
     /**
      * Authorize constructor.
-     * 
-     * @param HttpClient $httpClient
      */
     public function __construct(protected HttpClient $httpClient)
     {
@@ -21,10 +19,6 @@ class Authorize extends BaseApi
 
     /**
      * Void an authorize resource.
-     * 
-     * @param string $authorizeId
-     * 
-     * @return AuthorizeResponse
      */
     public function void(string $authorizeId): AuthorizeResponse
     {
