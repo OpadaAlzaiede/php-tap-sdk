@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace Obadaalzidi\TapPhpSdk;
 
-use Obadaalzidi\TapPhpSdk\Api\Authorize;
+use Psr\Http\Client\ClientInterface;
 use Obadaalzidi\TapPhpSdk\Api\Charge;
 use Obadaalzidi\TapPhpSdk\Api\Refund;
+use Obadaalzidi\TapPhpSdk\Api\Authorize;
 use Obadaalzidi\TapPhpSdk\Http\HttpClient;
 
 class Tap
@@ -16,9 +17,13 @@ class Tap
     /**
      * Tap constructor.
      */
-    public function __construct(string $secretKey)
+    public function __construct(
+        string $secretKey,
+        ?ClientInterface $client = null,
+    )
     {
-        $this->httpClient = new HttpClient($secretKey);
+        $client ??= new \GuzzleHttp\Client();
+        $this->httpClient = new HttpClient($secretKey, $client);
     }
 
     /**

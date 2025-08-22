@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Obadaalzidi\TapPhpSdk\Api;
 
 use Obadaalzidi\TapPhpSdk\Http\HttpClient;
-use Obadaalzidi\TapPhpSdk\Response\AuthorizeResponse;
+use Obadaalzidi\TapPhpSdk\Responses\AuthorizeResponse;
 
 class Authorize extends BaseApi
 {

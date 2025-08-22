@@ -8,6 +8,11 @@
             "Obadaalzidi\\TapPhpSdk\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "obada",
@@ -16,9 +21,17 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "guzzlehttp/guzzle": "8.0.x-dev"
+        "guzzlehttp/guzzle": "8.0.x-dev",
+        "psr/http-client": "^1.0@dev",
+        "psr/http-factory": "^1.1"
     },
     "require-dev": {
-        "laravel/pint": "dev-main"
+        "laravel/pint": "dev-main",
+        "pestphp/pest": "4.x-dev"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
     }
 }

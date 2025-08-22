@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Obadaalzidi\TapPhpSdk\Response;
+namespace Obadaalzidi\TapPhpSdk\Responses;
 
 use Obadaalzidi\TapPhpSdk\Enums\ChargeStatusEnum;
 

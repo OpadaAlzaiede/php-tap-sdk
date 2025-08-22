@@ -2,27 +2,21 @@
 
 namespace Obadaalzidi\TapPhpSdk\Http;
 
-use GuzzleHttp\Client as GuzzleClient;
-use Obadaalzidi\TapPhpSdk\Exceptions\AuthenticationException;
 use Obadaalzidi\TapPhpSdk\Exceptions\TapException;
+use Obadaalzidi\TapPhpSdk\Exceptions\AuthenticationException;
+use Psr\Http\Client\ClientExceptionInterface;
+use Psr\Http\Client\ClientInterface;
 
 class HttpClient
 {
-    protected GuzzleClient $client;
-
     /**
      * HttpClient constructor.
      */
-    public function __construct(string $secretKey)
-    {
-        $this->client = new GuzzleClient([
-            'base_uri' => 'https://api.tap.company/v2/',
-            'headers' => [
-                'Authorization' => "Bearer $secretKey",
-                'Accept' => 'application/json',
-                'Content-Type' => 'application/json',
-            ],
-        ]);
+    public function __construct(
+        private string $secretKey,
+        private ClientInterface $client,
+    ) {
+        //
     }
 
     /**
@@ -70,16 +64,17 @@ class HttpClient
             $response = $this->client->request($method, $endpoint, $options);
 
             return json_decode($response->getBody(), true);
-        } catch (\GuzzleHttp\Exception\ClientException $e) {
-            $response = json_decode($e->getResponse()->getBody(), true);
-            $error = $response['errors'][0]['description'] ?? null;
-            $statusCode = $e->getResponse()->getStatusCode();
+        } catch (ClientExceptionInterface $e) {
+            $message = method_exists($e, 'getResponse') ? $e->getResponse()->getBody() : $e->getMessage();
+            $statusCode = method_exists($e, 'getResponse') ? $e->getResponse()->getStatusCode() : $e->getCode();
 
             if ($statusCode === 401) {
-                throw new AuthenticationException($error);
+                throw new AuthenticationException($message);
             }
 
             throw new TapException($e->getMessage());
+        } catch (\Throwable $e) {
+            throw new TapException("Unexpected error: {$e->getMessage()}", $e->getCode(), $e);
         }
     }
 }

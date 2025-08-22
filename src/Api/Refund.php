@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Obadaalzidi\TapPhpSdk\Api;
 
 use Obadaalzidi\TapPhpSdk\Http\HttpClient;
-use Obadaalzidi\TapPhpSdk\Response\RefundResponse;
+use Obadaalzidi\TapPhpSdk\Responses\RefundResponse;
 
 class Refund extends BaseApi
 {
