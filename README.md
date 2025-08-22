@@ -1,10 +1,10 @@
-🐘 ####Tap PHP SDK
+🐘 ###Tap PHP SDK
 
 A modern, type-safe, and developer-friendly PHP SDK for Tap Payments
 .
 Easily create and manage Charges, Authorizations, Refunds, and verify Webhooks with clean PHP objects.
 
-✨ ####Features
+✨ ###Features
 
 🔑 Secure API authentication with secret keys
 
@@ -21,14 +21,14 @@ Easily create and manage Charges, Authorizations, Refunds, and verify Webhooks w
 ✅ Fully tested with PestPHP
 
 
-📦 ####Installation
+📦 ###Installation
 
 ```bash
 composer require obadaalzidi/tap-php-sdk
 ```
 Requires PHP 8.1+.
 
-🚀 ####Quick Start
+🚀 ###Quick Start
 ```php
 use Obadaalzidi\TapPhpSdk\Tap;
 
@@ -52,7 +52,7 @@ if ($charge->isCaptured()) {
 }
 ```
 
-📚 ####Usage
+📚 ###Usage
 
 Charges
 ```php
@@ -74,7 +74,7 @@ $refund = $tap->refunds()->create([
 ]);
 ```
 
-🧪 ####Testing
+🧪 ###Testing
 This SDK is fully tested with Pest
 .
 Run the test suite:
@@ -82,5 +82,5 @@ Run the test suite:
 vendor/bin/pest
 ```
 
-📜 License
+📜 ###License
 MIT © Obada Alzidi
